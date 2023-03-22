@@ -16,3 +16,6 @@ Currently, anyone can close a bet/escrow once all necessary chekcs are cleared.
 Maker can define taker address as "0x0000000000000000000000000000000000000000" allowing anyone to be Taker or they can limit it to a specific address.
 
 The Escargo smart contract interfaces with a custom built UniV3TwapOracle smart contract to convert price to a human readable format and determine which token is the base token (aka Token0) in Uniswap pools.
+
+### Contracts - Goerli
+**UniV3TwapOracle** - 0x20ad155ea921FeDb706126f7BdC18007fA55A4ff
