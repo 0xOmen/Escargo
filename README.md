@@ -17,5 +17,8 @@ Maker can define taker address as "0x0000000000000000000000000000000000000000" a
 
 The Escargo smart contract interfaces with a custom built UniV3TwapOracle smart contract to convert price to a human readable format and determine which token is the base token (aka Token0) in Uniswap pools.
 
+### Contract Addresses - Sepolia
+**UniV3TwapOracle** - 0xb255C27D27185aBe44Be0Cf25997AF1221DD6521
+
 ### Contracts - Goerli
 **UniV3TwapOracle** - 0x20ad155ea921FeDb706126f7BdC18007fA55A4ff
