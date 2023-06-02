@@ -8,7 +8,7 @@ contract OnChainAllowlistContract is Ownable {
     mapping(address => bool) public allowlist;
 
     /**
-     * @notice Add to whitelist
+     * @notice Takes an array of addresses and adds each to allowlist
      */
     function addToAllowlist(address[] calldata toAddAddresses) 
     external onlyOwner
@@ -19,7 +19,7 @@ contract OnChainAllowlistContract is Ownable {
     }
 
     /**
-     * @notice Remove from whitelist
+     * @notice Takes an array of addresses and removes each from allowlist
      */
     function removeFromAllowlist(address[] calldata toRemoveAddresses)
     external onlyOwner
@@ -30,12 +30,14 @@ contract OnChainAllowlistContract is Ownable {
     }
 
     /**
-     * @notice Function with whitelist
+     * @notice Checks if _tokenAddress if on allowlist and 'true'; returns bool
      */
-    function allowlistFunc() public view
+    function allowlistFunc(address _tokenAddress) public view returns (bool)
     {
-        require(allowlist[msg.sender], "NOT_IN_ALLOWLIST");
+        require(allowlist[_tokenAddress], "NOT_IN_ALLOWLIST");
 
-        // Do some useful stuff
+        if(allowlist[_tokenAddress] == true){
+            return(true);
+        }else{return(false);}
     }
 }
