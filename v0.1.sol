@@ -1,11 +1,14 @@
 // SPDX-License-Identifier: UNLICENSED
 pragma solidity >=0.6.0 <0.9.0;
 
-// Users (Maker) can open a bet and another user can take the bet (Taker); Taker can be specified by null address
+// Users (Maker) can open a bet and another user can take the bet (Taker); Taker can be specified by address
+// 
+// This build: (1) Owner can change Uniswap address (2) updated function naming Style (3) add user defined Uniswap Fee
 //
-// Next Steps: (1) Disallow rebase tokens as skintokens (2) Emergency stop function (3) Figure out tracking a user's bets
+// Next Steps: (1) AllowList only certain tokens as skintokens (2) Emergency stop function (3) Figure out tracking a user's bets
 // (4) emergency withdraw activation (user can withdraw if funds not claimed x days after bet should be settled) 
 // (5) Add upgradeable proxy (6) disallow a bet to be taken 'n' time before settlement time 
+// (7) make UniV3TwapOracle address upgradeable by owner
 
 import "https://github.com/OpenZeppelin/openzeppelin-contracts/blob/v4.0.0/contracts/token/ERC20/IERC20.sol";
 import "https://github.com/OpenZeppelin/openzeppelin-contracts/blob/v4.0.0/contracts/token/ERC20/ERC20.sol";
@@ -23,7 +26,8 @@ contract EscrowBet {
     address OWNER;
     address UNIV3FACTORY = 0x1F98431c8aD98523631AE4a59f267346ea31F984;      //Goerli Testnet factory address
 
-    address UNISWAP_TWAP_LIBRARY = 0x20ad155ea921FeDb706126f7BdC18007fA55A4ff;
+    //address UNISWAP_TWAP_LIBRARY = 0xb255C27D27185aBe44Be0Cf25997AF1221DD6521;      // Sepolia
+    address UNISWAP_TWAP_LIBRARY = 0x20ad155ea921FeDb706126f7BdC18007fA55A4ff;    // Goerli 
     UniV3TwapOracle public twapGetter;
 
     enum Status {
